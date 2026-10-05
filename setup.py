@@ -56,9 +56,12 @@ setup(
         "reportlab",
         "pillow",
         "qrplatba>=0.3.3",
+        "qrcode",  # api.py и ru.py импортируют qrcode напрямую — указываем явно
         "babel",
     ],
     tests_require=[
+        "pytest",
+        "pypdf",
         "PyPDF2",
         "xmlunittest",
         "future",

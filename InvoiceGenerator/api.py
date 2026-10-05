@@ -40,15 +40,21 @@ class Address(UnicodeProperty):
     :param ir: Taxpayer identification Number (IČO in czech)
     :param logo_filename: path to the image of logo of the company
     :param country: country
+    :param inn: ИНН (Russian taxpayer number, 10 or 12 digits)
+    :param kpp: КПП (Russian tax registration reason code, companies only)
+    :param bik: БИК (Russian bank identification code)
+    :param corr_account: корреспондентский счёт (bank correspondent account)
     """
     _attrs = ('summary', 'address', 'city', 'zip_code', 'phone', 'email',
               'bank_name', 'bank_account', 'bank_code', 'note', 'vat_id', 'ir',
-              'logo_filename', 'vat_note', 'country', 'division')
+              'logo_filename', 'vat_note', 'country', 'division',
+              'inn', 'kpp', 'bik', 'corr_account')
 
     def __init__(
         self, summary, address='', city='', zip_code='', phone='', email='',
         bank_name='', bank_account='', bank_code='', note='', vat_id='', ir='',
         logo_filename='', vat_note='', country='', division='',
+        inn='', kpp='', bik='', corr_account='',
     ):
         self.summary = summary
         self.address = address
@@ -66,6 +72,10 @@ class Address(UnicodeProperty):
         self.vat_note = vat_note
         self.ir = ir
         self.logo_filename = logo_filename
+        self.inn = inn
+        self.kpp = kpp
+        self.bik = bik
+        self.corr_account = corr_account
 
     def bank_account_str(self):
         """ Returns bank account identifier with bank code after slash """

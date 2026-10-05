@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+        python-version: ['3.9', '3.10', '3.11', '3.12', '3.13']
 
     steps:
     - uses: actions/checkout@v2
@@ -30,9 +30,9 @@ jobs:
         sudo locale-gen 'cs_CZ.UTF-8'
         python -m pip install --upgrade pip
         pip install setuptools
-        python setup.py install
-        pip install .[docs] 
+        pip install .[docs]
         pip install .[dev]
+        pip install pytest pypdf PyPDF2 xmlunittest future six
 
     - name: Run flake8
       run: |
@@ -40,7 +40,7 @@ jobs:
 
     - name: Run tests
       run: |
-        python setup.py test
+        python -m pytest -v  # setup.py test убран из актуального setuptools
 
     - name: Build documentation
       run: |
